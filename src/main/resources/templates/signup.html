@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <link media="all" rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+
+    <title>Sign Up</title>
+</head>
+<body class="p-3 mb-2 bg-light text-black">
+<div class="container justify-content-center w-50 p-3" style="background-color: #eeeeee; margin-top: 5em;">
+    <div class="form-group">
+        <label><a th:href="@{/login}">Back to Login</a></label>
+    </div>
+
+    <h1 class="display-5">Sign Up</h1>
+    <form action="#" method="post"
+          role="form" th:action="@{/registration}" th:object="${users}">
+
+
+        <div th:class="${'alert ' + alertClass}" th:if="${message}">
+            <span th:utext="${message}"></span>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputFirstName">First Name</label>
+                <input class="form-control" id="inputFirstName" maxlength="20" name="firstName"
+                       placeholder="Enter First Name" required type="input">
+                <label th:if="${#fields.hasErrors('firstName')}"
+                       th:errors="*{firstName}"
+                       class="text text-danger">
+                </label>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputLastName">Last Name</label>
+                <input class="form-control" id="inputLastName" maxlength="20" name="lastName"
+                       placeholder="Enter Last Name" required type="input">
+                <label th:if="${#fields.hasErrors('lastName')}"
+                       th:errors="*{lastName}"
+                       class="text text-danger">
+                </label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputUsername">Username</label>
+                <input class="form-control" id="inputUsername" maxlength="20" name="username" placeholder="Enter Username"
+                       required type="input">
+                <label th:if="${#fields.hasErrors('username')}"
+                       th:errors="*{username}"
+                       class="text text-danger">
+                </label>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="inputPassword">Password</label>
+                <input class="form-control" id="inputPassword" maxlength="20" name="password"
+                       placeholder="Enter Password" required type="password">
+                <label th:if="${#fields.hasErrors('password')}"
+                       th:errors="*{password}"
+                       class="text text-danger">
+                </label>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+    </form>
+</div>
+</body>
+</html>
